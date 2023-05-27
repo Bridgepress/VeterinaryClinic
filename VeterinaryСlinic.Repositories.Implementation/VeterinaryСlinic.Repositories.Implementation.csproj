@@ -1,0 +1,15 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net7.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\VeterinaryClinic.Core\VeterinaryClinic.Core.csproj" />
+    <ProjectReference Include="..\VeterinaryClinic.DataAccess\VeterinaryClinic.DataAccess.csproj" />
+    <ProjectReference Include="..\VeterinaryСlinic.Repositories.Contracts\VeterinaryСlinic.Repositories.Contracts.csproj" />
+  </ItemGroup>
+
+</Project>

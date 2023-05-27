@@ -1,0 +1,34 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net7.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Cors" Version="2.2.0" />
+    <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="7.0.0-rc.2.22476.2" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="7.0.4">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="7.0.4">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Serilog" Version="3.0.0-dev-01926" />
+    <PackageReference Include="Serilog.AspNetCore" Version="7.0.0-dev-00302" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.5.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\VeterinaryClinic.Api\VeterinaryClinic.Api.csproj" />
+    <ProjectReference Include="..\VeterinaryClinic.Core\VeterinaryClinic.Core.csproj" />
+    <ProjectReference Include="..\VeterinaryClinic.DataAccess\VeterinaryClinic.DataAccess.csproj" />
+    <ProjectReference Include="..\VeterinaryClinic.Domain\VeterinaryClinic.Domain.csproj" />
+    <ProjectReference Include="..\VeterinaryСlinic.Handlers\VeterinaryСlinic.Handlers.csproj" />
+    <ProjectReference Include="..\VeterinaryСlinic.Repositories.Implementation\VeterinaryСlinic.Repositories.Implementation.csproj" />
+  </ItemGroup>
+
+</Project>
