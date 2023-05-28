@@ -8,7 +8,7 @@ namespace VeterinaryClinic.Core.Extensions
     public static class ServicesExtensions
     {
         public static void AddInstallersFromAssemblies(this IServiceCollection services, IConfiguration configuration,
-        IEnumerable<Assembly> assemblies)
+            IEnumerable<Assembly> assemblies)
         {
             assemblies.Distinct()
                 .SelectMany(assembly => assembly.GetTypes().Where(type => type.IsAssignableTo(typeof(IInstaller))))
@@ -20,7 +20,7 @@ namespace VeterinaryClinic.Core.Extensions
         }
 
         public static void AddInstallersFromAssemblies(this IServiceCollection services, IConfiguration configuration,
-       params Assembly[] assemblies)
+        params Assembly[] assemblies)
         {
             services.AddInstallersFromAssemblies(configuration, (IEnumerable<Assembly>)assemblies);
         }

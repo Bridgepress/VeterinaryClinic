@@ -12,7 +12,7 @@ namespace VeterinaryClinic.DataAccess.Installers
         {
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(configuration.GetConnectionString(ApplicationDbContext.ConnectionStringKey),
-                    sqlServerOptions => sqlServerOptions.MigrationsAssembly("EducationSystem.DataAccess")));
+                    sqlServerOptions => sqlServerOptions.MigrationsAssembly("VeterinaryClinic.DataAccess")));
             services.AddHostedService<MigrationsService>();
         }
     }

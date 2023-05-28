@@ -5,7 +5,7 @@ using VeterinaryСlinic.Repositories.Contracts.Repositories;
 
 namespace VeterinaryСlinic.Repositories.Implementation.Repositories
 {
-    public class BaseRepository<TEntity> : IRepositoryBase<TEntity>
+    public class BaseRepository<TEntity> : IBaseRepository<TEntity>
        where TEntity : BaseEntity
     {
         protected readonly ApplicationDbContext Context;

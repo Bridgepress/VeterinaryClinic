@@ -2,7 +2,7 @@
 
 namespace VeterinaryСlinic.Repositories.Contracts.Repositories
 {
-    public interface IDogRepository : IRepositoryBase<Dog>
+    public interface IDogRepository : IBaseRepository<Dog>
     {
     }
 }

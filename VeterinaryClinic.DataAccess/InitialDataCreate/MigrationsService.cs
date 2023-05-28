@@ -2,6 +2,7 @@
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Serilog;
+using VeterinaryClinic.Domain.Entities;
 
 namespace VeterinaryClinic.DataAccess.InitialDataCreate
 {
@@ -30,6 +31,37 @@ namespace VeterinaryClinic.DataAccess.InitialDataCreate
                 _logger.Fatal(e, "Cannot migrate database");
                 return;
             }
+
+            await SeedDogs(context, stoppingToken); 
+        }
+
+        private static async Task SeedDogs(ApplicationDbContext context, CancellationToken stoppingToken)
+        {
+            if (await context.Dogs.AnyAsync(stoppingToken))
+            {
+                return;
+            }
+            context.AddRange(
+             new Dog
+             {
+                 Id = Guid.NewGuid(),
+                 Name = "Нео",
+                 Color = "red & amber",
+                 TailLength = 22,
+                 Weight = 32
+
+             },
+            new Dog
+            {
+                Id = Guid.NewGuid(),
+                Name = "Jessy",
+                Color = "black & white",
+                TailLength = 7,
+                Weight = 14
+            }
+          );
+
+            await context.SaveChangesAsync(stoppingToken);
         }
     }
 }

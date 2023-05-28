@@ -23,6 +23,7 @@ namespace VeterinaryСlinic.Handlers.Handlers.DogHandlers
         public async Task<CreatedResponse> Handle(CreateDogCommand request, CancellationToken cancellationToken)
         {
             await ValidateNameDuplicate(request, cancellationToken);
+            ValidateTailLength(request, cancellationToken);
             var entity = _mapper.Map<Dog>(request);
             _repositoryManager.DogRepository.Create(entity);
             await _repositoryManager.SaveChangesAsync(cancellationToken);
@@ -36,6 +37,14 @@ namespace VeterinaryСlinic.Handlers.Handlers.DogHandlers
                     .AnyAsync(x => x.Name == request.Name, cancellationToken))
             {
                 throw new DuplicatedNameException(request.Name);
+            }
+        }
+
+        private void ValidateTailLength(CreateDogCommand request, CancellationToken cancellationToken)
+        {
+            if (request.TailLength < 0)
+            {
+                throw new TailLengthException();
             }
         }
     }

@@ -4,7 +4,7 @@ using Serilog;
 using VeterinaryClinic.Core.Exceptions;
 using ApplicationException = VeterinaryClinic.Core.Exceptions.ApplicationException;
 
-namespace VeterinaryClinic.Api.Filters
+namespace VeterinaryClinic.Api.Filters.GlobalErrorHandling
 {
     public class GlobalErrorHandlingMiddleware
     {

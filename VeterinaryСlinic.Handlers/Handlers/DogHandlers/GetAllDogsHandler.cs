@@ -13,9 +13,10 @@ namespace VeterinaryСlinic.Handlers.Handlers.DogHandlers
         private readonly IRepositoryManager _repositoryManager;
         private readonly IMapper _mapper;
 
-        public GetAllDogsHandler(IRepositoryManager repositoryManager)
+        public GetAllDogsHandler(IRepositoryManager repositoryManager, IMapper mapper)
         {
             _repositoryManager = repositoryManager;
+            _mapper = mapper;
         }
 
         public async Task<List<GetAllDogsResponse>> Handle(GetAllDogsRequest request,

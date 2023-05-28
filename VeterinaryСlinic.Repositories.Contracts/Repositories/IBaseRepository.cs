@@ -2,7 +2,7 @@
 
 namespace VeterinaryСlinic.Repositories.Contracts.Repositories
 {
-    public interface IRepositoryBase<TEntity>
+    public interface IBaseRepository<TEntity>
         where TEntity : BaseEntity
     {
         IQueryable<TEntity> GetAll();

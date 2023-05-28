@@ -2,11 +2,12 @@ using Serilog;
 using Serilog.Events;
 using Serilog.Sinks.MSSqlServer;
 using VeterinaryClinic.Api;
-using VeterinaryClinic.Api.Filters;
 using VeterinaryClinic.DataAccess;
 using Veterinary—linic.Handlers.Installers;
 using Veterinary—linic.Repositories.Implementation;
-using VeterinaryClinic.Core.Extensions; 
+using VeterinaryClinic.Core.Extensions;
+using VeterinaryClinic.Api.Filters.GlobalErrorHandling;
+using AspNetCoreRateLimit;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -27,12 +28,20 @@ Log.Logger = new LoggerConfiguration()
     .CreateLogger();
 
 builder.Services.AddSingleton(Log.Logger);
+builder.Services.AddMemoryCache();
+builder.Services.Configure<IpRateLimitOptions>(builder.Configuration.GetSection("IpRateLimiting"));
+builder.Services.AddSingleton<IIpPolicyStore, MemoryCacheIpPolicyStore>();
+builder.Services.AddSingleton<IRateLimitCounterStore, MemoryCacheRateLimitCounterStore>();
+builder.Services.AddSingleton<IRateLimitConfiguration, RateLimitConfiguration>();
+builder.Services.AddSingleton<IProcessingStrategy, AsyncKeyLockProcessingStrategy>();
+builder.Services.AddInMemoryRateLimiting();
 builder.Logging.AddSerilog();
-builder.Services.AddControllers();
 builder.Services.AddInstallersFromAssemblies(builder.Configuration,
     typeof(ApplicationDbContext), typeof(RepositoryManager),
     typeof(HandlersInstaller), typeof(ApiAssemblyMarker));
-
+builder.Services.AddControllers();
+builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddSwaggerGen();
 var app = builder.Build();
 app.UseMiddleware<GlobalErrorHandlingMiddleware>();
 
@@ -44,7 +53,7 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
-
+app.UseIpRateLimiting();
 app.UseAuthentication();
 app.UseAuthorization();
 app.UseAuthentication();

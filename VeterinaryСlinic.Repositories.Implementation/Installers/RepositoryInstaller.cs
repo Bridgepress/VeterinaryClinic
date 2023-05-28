@@ -12,6 +12,7 @@ namespace VeterinaryСlinic.Repositories.Implementation.Installers
         public void Install(IServiceCollection services, IConfiguration configuration)
         {
             services.AddScoped<IRepositoryManager, RepositoryManager>();
+
             var repositories = typeof(RepositoryManager).Assembly.GetTypes()
                 .Where(type => type.BaseType is not null && type.BaseType.IsGenericType &&
                                type.BaseType.GetGenericTypeDefinition() == typeof(BaseRepository<>));
