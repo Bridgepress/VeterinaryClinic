@@ -44,4 +44,10 @@
     <ProjectReference Include="..\VeterinaryClinic.DataAccess\VeterinaryClinic.DataAccess.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Reference Include="VeterinaryClinic.Host">
+      <HintPath>..\VeterinaryClinic.Host\obj\Debug\net7.0\VeterinaryClinic.Host.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
 </Project>
