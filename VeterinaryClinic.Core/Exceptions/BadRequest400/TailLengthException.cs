@@ -1,12 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace VeterinaryClinic.Core.Exceptions.BadRequest400
+﻿namespace VeterinaryClinic.Core.Exceptions.BadRequest400
 {
-    internal class TailLengthException
+    public class TailLengthException : ApplicationException
     {
+        public TailLengthException()
+            : base(400, $"Tail height is a negative number")
+        {
+
+        }
     }
 }

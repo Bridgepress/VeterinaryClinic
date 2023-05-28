@@ -27,14 +27,21 @@ namespace VeterinaryСlinic.Handlers.Handlers.DogHandlers
         {
             var query = _repositoryManager.DogRepository.GetAll();
             var count = await query.CountAsync(cancellationToken);
-            var pagedCourses = await query
+            var pagedDogs = await query
                 .Sort(request.OrderBy, request.SortOrder)
                 .Skip(request.PageSize * request.PageNumber)
                 .Take(request.PageSize)
-                .Select(c => _mapper.Map<GetAllDogsResponse>(c))
+                .Select(c => new GetAllDogsResponse
+                {
+                    Color = c.Color,
+                    Id = c.Id,
+                    Name = c.Name,    
+                    TailLength = c.TailLength,
+                    Weight = c.Weight
+                })
                 .ToListAsync(cancellationToken);
 
-            return new PaginationResponse<GetAllDogsResponse>(count, pagedCourses);
+            return new PaginationResponse<GetAllDogsResponse>(count, pagedDogs);
         }
     }
 }
