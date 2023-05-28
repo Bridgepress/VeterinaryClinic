@@ -62,3 +62,12 @@ app.MapControllers();
 
 app.Run();
 
+namespace VeterinaryClinic.Host
+{
+    /// <summary>
+    /// use this class in app factories in integration tests.
+    /// </summary>
+    public abstract class Program
+    {
+    }
+}

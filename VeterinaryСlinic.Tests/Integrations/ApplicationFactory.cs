@@ -5,6 +5,8 @@ using Microsoft.VisualStudio.TestPlatform.TestHost;
 using VeterinaryClinic.DataAccess;
 using VeterinaryClinic.DataAccess.InitialDataCreate;
 using Microsoft.Extensions.DependencyInjection;
+using VeterinaryClinic.Host;
+using Program = VeterinaryClinic.Host.Program;
 
 namespace VeterinaryСlinic.Tests.Integrations
 {

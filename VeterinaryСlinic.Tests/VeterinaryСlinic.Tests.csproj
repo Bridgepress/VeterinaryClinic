@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net7.0</TargetFramework>
@@ -42,12 +42,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\VeterinaryClinic.DataAccess\VeterinaryClinic.DataAccess.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Reference Include="VeterinaryClinic.Host">
-      <HintPath>..\VeterinaryClinic.Host\obj\Debug\net7.0\VeterinaryClinic.Host.dll</HintPath>
-    </Reference>
+    <ProjectReference Include="..\VeterinaryClinic.Host\VeterinaryClinic.Host.csproj" />
   </ItemGroup>
 
 </Project>

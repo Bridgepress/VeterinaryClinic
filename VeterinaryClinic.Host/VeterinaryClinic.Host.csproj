@@ -33,10 +33,4 @@
     <ProjectReference Include="..\VeterinaryСlinic.Repositories.Implementation\VeterinaryСlinic.Repositories.Implementation.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Reference Include="VeterinaryClinic.Host">
-      <HintPath>obj\Debug\net7.0\VeterinaryClinic.Host.dll</HintPath>
-    </Reference>
-  </ItemGroup>
-
 </Project>

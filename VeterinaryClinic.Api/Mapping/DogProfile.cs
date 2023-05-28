@@ -9,6 +9,7 @@ namespace VeterinaryClinic.Api.Mapping
     {
         public DogProfile()
         {
+            CreateMap<Dog, GetAllDogsResponse>();
             CreateMap<Dog, CreateDogCommand>().ReverseMap();
         }
     }
